@@ -1,4 +1,4 @@
-import { getSelectedRadio } from './getDataFromForm'
+// import { getSelectedRadio } from './getDataFromForm'
 
 function checkIfThereIsData(fieldData) {
   return !!fieldData
@@ -61,30 +61,31 @@ function validateData(data, fieldsValidationRules) {
           errorMessage,
         })
 
-        // show response on page
+        // show response on page {
 
-        const inputs = document.querySelectorAll(`[name="${fieldName}"]`)
-        inputs.forEach((input) => {
-          if (!input.parentElement.parentElement.querySelector('.invalid-feedback')) {
-            const error = document.createElement('div')
-            error.classList.add('invalid-feedback')
-            error.innerText = errorMessage
-            input.parentElement.parentElement.appendChild(error)
-          }
+        // const inputs = document.querySelectorAll(`[name="${fieldName}"]`)
+        // inputs.forEach((input) => {
+        //   if (!input.parentElement.parentElement.querySelector('.invalid-feedback')) {
+        //     const error = document.createElement('div')
+        //     error.classList.add('invalid-feedback')
+        //     error.innerText = errorMessage
+        //     input.parentElement.parentElement.appendChild(error)
+        //   }
 
-          input.addEventListener('input', () => {
-            const responseAfterInput = ruleInstructions.checkFunc(getSelectedRadio(fieldName), rule.value)
-            console.log(responseAfterInput)
-            console.log('get radio again', fieldName, getSelectedRadio(fieldName))
-            if (responseAfterInput) {
-              input.classList.remove('error')
-              const feedback = input.parentElement.parentElement.querySelector('.invalid-feedback')
-              if (feedback) {
-                feedback.remove()
-              }
-            }
-          })
-        })
+        //   input.addEventListener('input', () => {
+        //     const responseAfterInput = ruleInstructions.checkFunc(getSelectedRadio(fieldName), rule.value)
+        //     console.log(responseAfterInput)
+        //     console.log('get radio again', fieldName, getSelectedRadio(fieldName))
+        //     if (responseAfterInput) {
+        //       input.classList.remove('error')
+        //       const feedback = input.parentElement.parentElement.querySelector('.invalid-feedback')
+        //       if (feedback) {
+        //         feedback.remove()
+        //       }
+        //     }
+        //   })
+        // })
+        // }
 
         return true
       }

@@ -2,6 +2,7 @@
 import '../sass/main.scss'
 import { getDataFromForm } from './getDataFromForm'
 import { validateData } from './validateData'
+import { showErrorOnPage } from './showErrorOnPage'
 
 // const form1 = document.querySelector('#form1')
 
@@ -169,17 +170,5 @@ form.onsubmit = (e) => {
 
   validationResponse.forEach(elem => console.log(elem))
 
-  validationResponse.forEach((elem) => {
-    // const errorMessage = elem.errorMessage
-    // const fieldName = elem.fieldName
-    // const field = document.querySelector(`[name="${fieldName}"]`)
-    // field.classList.add('error')
-    // // field.setAttribute('invalid', true)
-    // const error = document.createElement('div')
-    // error.classList.add('invalid-feedback')
-    // error.innerText = errorMessage
-    // field.parentElement.appendChild(error)
-    console.log(elem)
-  },
-  )
+  showErrorOnPage(validationResponse)
 }
