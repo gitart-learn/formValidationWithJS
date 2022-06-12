@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>form</title>
+</head>
+
+<body>
+  <div class="navbar navbar-dark bg-primary  ">
+    <div class="container">
+
+      <h2 class='navbar-brand'>Submit an article</h2>
+    </div>
+  </div>
+  <div class="container">
+
+    <form class="form pb-5 pt-3  needs-validation" action="#" id="form">
+
+
+
+      <div class="mb-3">
+
+        <label class="form__title form-label h5">
+          Post Title
+          <input type="text" class="form-control" name="title">
+        </label>
+      </div>
+
+      <div class="mb-3">
+
+        <label class="form__title form-label h5">
+          Email
+          <input type="email" class="form-control" name="email">
+        </label>
+      </div>
+
+      <div class="mb-3">
+
+        <label class="form__title form-label h5">
+          <span>your phone</span> <br>
+          <select name="phoneCode" class="form-control form-select ">
+            <option value="380"> 380</option>
+            <option value="1">1</option>
+            <option value="48">48</option>
+            <option value="	370"> 370</option>
+          </select>
+          <input type="tel" class="form-control" name="phone">
+        </label>
+      </div>
+
+      <div class="mb-3">
+
+        <label class="form__content form-label h5">
+          Post Content
+          <textarea class="form-control" name="content" rows="3"></textarea>
+        </label>
+      </div>
+
+
+      <div class="mb-3">
+
+        <label class="h5">
+          Date of publication <br>
+          <input class="form__date" type="date" name="date">
+        </label>
+      </div>
+
+      <div class="mb-3 ">
+
+
+        <span class="h5">Post Category </span><br>
+        <label class="me-3">
+          <input class="form__category form-check-input" type="radio" value="category1" name="category">
+          category1</label>
+        <label class="me-3">
+          <input class="form__category form-check-input" type="radio" value="category2" name="category">
+          category2</label>
+        <label class="me-3">
+          <input class="form__category form-check-input" type="radio" value="category3" name="category">
+          category3</label>
+      </div>
+
+
+
+      <div class="mb-3">
+
+        <span class="h5">radio</span> <br>
+        <label class="me-3">
+          <input class="form__category form-check-input" type="radio" value="radio1" name="radio">
+          radio</label>
+        <label class="me-3">
+          <input class="form__category form-check-input" type="radio" value="radio2" name="radio">
+          radio</label>
+        <label class="me-3">
+          <input class="form__category form-check-input" type="radio" value="radio3" name="radio">
+          radio</label>
+      </div>
+
+
+
+      <div class="mb-3">
+
+
+        <span class="h5">Post Tags</span> <br>
+        <!--  margin right = 'me'  maybe bag -->
+        <label class="me-3">
+          <input class="form__tag form-check-input " type="checkbox" value="tag1" name="tag">
+          TAG1</label>
+        <label class="me-3">
+          <input class="form__tag form-check-input " type="checkbox" value="tag2" name="tag">
+          TAG2</label>
+        <label class="me-3">
+          <input class="form__tag form-check-input " type="checkbox" value="tag3" name="tag">
+          TAG3</label>
+
+      </div>
+      <div class="mb-4 ">
+
+
+        <span class="h5 me-1">Show on home page?</span> <br>
+        <label>
+          <input class="form__show form-check-input" type="checkbox" name="show">
+          show
+        </label>
+      </div>
+      <button type="submit" class="form__btn btn btn-lg btn-primary mb-3">Submit</button>
+
+
+    </form>
+
+    <h4 class=" ">another form
+    </h4>
+    <form class="form mb-5" action="#" id="form1">
+
+
+
+      <div class="mb-3">
+
+        <label class="form__title form-label">
+          Post Title
+          <input type="text" class="form-control" name="title">
+        </label>
+      </div>
+
+      <div class="mb-3">
+
+        <label class="form__content form-label">
+          Post Content
+          <textarea class="form-control" name="content" rows="3"></textarea>
+        </label>
+      </div>
+
+
+      <div class="mb-3">
+
+        <label>
+          <p>Date of publication</p>
+          <input class="form__date" type="date" name="date">
+        </label>
+      </div>
+
+
+
+      <div class="mb-3">
+
+
+        <p>Show on home page?</p>
+        <label for="show">
+          <input class="form__show form-check-input" type="checkbox" name="show">
+          show </label>
+      </div>
+
+      <div class="mb-3">
+
+        <p>radio</p>
+        <label>
+          <input class="form__category form-check-input" type="radio" value="radio1" name="radio">
+          radio</label>
+        <label>
+          <input class="form__category form-check-input" type="radio" value="radio2" name="radio">
+          radio</label>
+        <label>
+          <input class="form__category form-check-input" type="radio" value="radio3" name="radio">
+          radio</label>
+      </div>
+
+
+
+      <div class="mb-3">
+
+
+        <p>Post Tags</p>
+
+        <label>
+          <input class="form__tag form-check-input" type="checkbox" value="tag1" name="tag">
+          TAG1</label>
+        <label>
+          <input class="form__tag form-check-input" type="checkbox" value="tag2" name="tag">
+          TAG2</label>
+        <label>
+          <input class="form__tag form-check-input" type="checkbox" value="tag3" name="tag">
+          TAG3</label>
+
+      </div>
+      <button type="submit" class="form__btn btn btn-primary mb-3">Submit</button>
+
+
+    </form>
+  </div>
+
+  <script type="module" src="src/js/main.js">
+
+  </script>
+</body>
+
+</html>
