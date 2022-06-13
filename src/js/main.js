@@ -2,7 +2,7 @@
 import '../sass/main.scss'
 import { getDataFromForm } from './getDataFromForm'
 import { validateData } from './validateData'
-import { showErrorOnPage } from './showErrorOnPage'
+import { handelResponse } from './handelResponse'
 
 // const form1 = document.querySelector('#form1')
 
@@ -44,7 +44,7 @@ const form = document.querySelector('#form')
 form.onsubmit = (e) => {
   e.preventDefault()
 
-  const data = getDataFromForm(form, [
+  const fieldsToCheck = [
     {
       inputName: 'title',
       type: 'text',
@@ -86,7 +86,8 @@ form.onsubmit = (e) => {
       type: 'checkbox',
     },
 
-  ])
+  ]
+  const data = getDataFromForm(form, fieldsToCheck)
   console.log('data')
   console.log(data)
   const fieldsValidationRules = [
@@ -170,5 +171,5 @@ form.onsubmit = (e) => {
 
   validationResponse.forEach(elem => console.log(elem))
 
-  showErrorOnPage(validationResponse)
+  handelResponse(validationResponse, form, fieldsToCheck)
 }

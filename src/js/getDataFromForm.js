@@ -21,23 +21,21 @@
 
 function getDataFromField(field, form) {
   const formData = new FormData(form)
-  switch (field.type) {
-    case 'checkbox':
-      return formData.getAll(field.inputName)
-    default:
-      return formData.get(field.inputName)
-    // case 'switcher':
-    //   return formData.getAll(field.inputName)
-    // case 'radio':
-    //   return formData.getAll(field.inputName)
-
-    // case 'text': {
-    //   return formData.getAll(field.inputName)
-    // }
-
-    // case 'date':
-    //   return formData.get(field.inputName)
+  if (field.type === 'checkbox') {
+    return formData.getAll(field.inputName)
   }
+  return formData.get(field.inputName)
+  // case 'switcher':
+  //   return formData.getAll(field.inputName)
+  // case 'radio':
+  //   return formData.getAll(field.inputName)
+
+  // case 'text': {
+  //   return formData.getAll(field.inputName)
+  // }
+
+  // case 'date':
+  //   return formData.get(field.inputName)
 }
 
 function getDataFromForm(form, fields) {
@@ -49,4 +47,4 @@ function getDataFromForm(form, fields) {
   return data
 }
 
-export { getDataFromForm }
+export { getDataFromForm, getDataFromField }

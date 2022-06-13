@@ -1,7 +1,7 @@
 // import { getSelectedRadio } from './getDataFromForm'
 
 function checkIfThereIsData(fieldData) {
-  return !!fieldData
+  return !!fieldData && fieldData.length > 0
 }
 
 function checkIfItIsEmail(fieldData) {
@@ -59,6 +59,9 @@ function validateData(data, fieldsValidationRules) {
         validationResponse.push({
           fieldName,
           errorMessage,
+          checkFunc: ruleInstructions.checkFunc,
+          value: rule.value,
+
         })
 
         // show response on page {
