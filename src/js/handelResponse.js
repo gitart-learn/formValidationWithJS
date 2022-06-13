@@ -7,6 +7,7 @@ function handelResponse(response, form, fieldsToCheck) {
     const fields = document.querySelectorAll(`[name="${fieldName}"]`)
     fields.forEach((field) => {
       if (!field.parentElement.parentElement.querySelector('.invalid-feedback')) {
+        field.classList.add('error')
         const error = document.createElement('div')
         error.classList.add('invalid-feedback')
         error.innerText = errorMessage
@@ -30,6 +31,7 @@ function handelResponse(response, form, fieldsToCheck) {
           feedback.remove()
           console.log(1)
           field.removeEventListener('input', listener)
+          field.classList.remove('error')
         }
       }
 
