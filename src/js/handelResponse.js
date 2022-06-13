@@ -1,7 +1,13 @@
 import { getDataFromField } from './getDataFromForm'
+import { validateData } from './validateData'
 
-function handelResponse(response, form, fieldsToCheck) {
-  response.forEach((elem) => {
+function handelResponse({
+  form,
+  errors,
+  fieldsToCheck,
+  criterias,
+}) {
+  errors.forEach((elem) => {
     const errorMessage = elem.errorMessage
     const fieldName = elem.fieldName
     const fields = document.querySelectorAll(`[name="${fieldName}"]`)
@@ -17,21 +23,23 @@ function handelResponse(response, form, fieldsToCheck) {
       function listener() {
         const fieldToCheck = fieldsToCheck.find(elem => elem.inputName === fieldName)
         const newData = getDataFromField(fieldToCheck, form)
-        console.log(newData)
 
-        const responseAfterInput = elem.checkFunc(newData, elem.value)
-        console.log('checkfunc', elem.checkFunc)
-        console.log(responseAfterInput)
+        const criteria = criterias.find(elem => elem.name === fieldName)
+        const errors = validateData({
+          [fieldName]: newData,
+        }, [
+          criteria,
+        ])
 
-        const feedback = field.parentElement.parentElement.querySelector('.invalid-feedback')
-
-        const check = feedback && responseAfterInput
-        console.log('check', check, 'feedback', feedback, 'responseAfterInput', responseAfterInput)
-        if (feedback && responseAfterInput) {
+        if (errors.length === 0) {
+          const feedback = field.parentElement.parentElement.querySelector('.invalid-feedback')
           feedback.remove()
-          console.log(1)
           field.removeEventListener('input', listener)
           field.classList.remove('error')
+        }
+        else {
+          const feedback = field.parentElement.parentElement.querySelector('.invalid-feedback')
+          feedback.innerText = errors[0].errorMessage
         }
       }
 

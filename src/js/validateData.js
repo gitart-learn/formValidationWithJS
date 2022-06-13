@@ -59,36 +59,7 @@ function validateData(data, fieldsValidationRules) {
         validationResponse.push({
           fieldName,
           errorMessage,
-          checkFunc: ruleInstructions.checkFunc,
-          value: rule.value,
-
         })
-
-        // show response on page {
-
-        // const inputs = document.querySelectorAll(`[name="${fieldName}"]`)
-        // inputs.forEach((input) => {
-        //   if (!input.parentElement.parentElement.querySelector('.invalid-feedback')) {
-        //     const error = document.createElement('div')
-        //     error.classList.add('invalid-feedback')
-        //     error.innerText = errorMessage
-        //     input.parentElement.parentElement.appendChild(error)
-        //   }
-
-        //   input.addEventListener('input', () => {
-        //     const responseAfterInput = ruleInstructions.checkFunc(getSelectedRadio(fieldName), rule.value)
-        //     console.log(responseAfterInput)
-        //     console.log('get radio again', fieldName, getSelectedRadio(fieldName))
-        //     if (responseAfterInput) {
-        //       input.classList.remove('error')
-        //       const feedback = input.parentElement.parentElement.querySelector('.invalid-feedback')
-        //       if (feedback) {
-        //         feedback.remove()
-        //       }
-        //     }
-        //   })
-        // })
-        // }
 
         return true
       }
@@ -96,25 +67,6 @@ function validateData(data, fieldsValidationRules) {
     },
     )
   }
-
-  // show response on page
-  // validationResponse.forEach((elem) => {
-  //   const errorMessage = elem.errorMessage
-  //   const fieldName = elem.fieldName
-  //   const field = document.querySelector(`[name="${fieldName}"]`)
-  //   field.classList.add('error')
-  //   // field.setAttribute('invalid', true)
-  //   const error = document.createElement('div')
-  //   error.classList.add('invalid-feedback')
-  //   error.innerText = errorMessage
-  //   field.parentElement.appendChild(error)
-
-  //   field.addEventListener('input', () => {
-  //     field.classList.remove('error')
-  //     field.parentElement.querySelector('.invalid-feedback').remove()
-  //   })
-  // },
-  // )
 
   return validationResponse
 }
