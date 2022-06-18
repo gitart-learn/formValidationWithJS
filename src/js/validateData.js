@@ -21,7 +21,7 @@ const rulesInstructions = [
   {
     ruleName: 'required',
     checkFunc: checkIfThereIsData,
-    defaultErrorMessage: '{fieldName}  is required',
+    defaultErrorMessage: '{inputName}  is required',
   },
   {
     ruleName: 'minLength',
@@ -44,20 +44,20 @@ const rulesInstructions = [
 function validateData(data, fieldsValidationRules) {
   const errors = []
 
-  for (const fieldName in data) {
-    const validationCriteria = (fieldsValidationRules.find(fieldValidationRules => fieldValidationRules.name === fieldName))
+  for (const inputName in data) {
+    const validationCriteria = (fieldsValidationRules.find(fieldValidationRules => fieldValidationRules.inputName === inputName))
     if (!validationCriteria) continue
     const rules = validationCriteria.rules
 
     rules.some((rule) => {
       const ruleInstructions = rulesInstructions.find(elem => elem.ruleName === rule.ruleName)
-      const response = ruleInstructions.checkFunc(data[fieldName], rule.value)
+      const response = ruleInstructions.checkFunc(data[inputName], rule.value)
       if (!response) {
         let errorMessage = rule.SpecificErrorMessage || ruleInstructions.defaultErrorMessage
-        errorMessage = errorMessage.replace('{fieldName}', fieldName).replace('{value}', rule.value)
+        errorMessage = errorMessage.replace('{inputName}', inputName).replace('{value}', rule.value)
 
         errors.push({
-          fieldName,
+          inputName,
           errorMessage,
         })
 

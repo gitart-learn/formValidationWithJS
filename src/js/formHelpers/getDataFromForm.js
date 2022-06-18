@@ -17,4 +17,4 @@ function getDataFromForm(form, fields) {
   return data
 }
 
-export { getDataFromForm, getDataFromField }
+export { getDataFromForm }

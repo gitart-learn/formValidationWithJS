@@ -10,8 +10,8 @@ function removeErrorFeedback(form) {
 function addErrorFeedback(errors, form) {
   errors.forEach((error) => {
     const errorMessage = error.errorMessage
-    const fieldName = error.fieldName
-    const fieldsElements = form.querySelectorAll(`[name="${fieldName}"]`)
+    const inputName = error.inputName
+    const fieldsElements = form.querySelectorAll(`[name="${inputName}"]`)
 
     fieldsElements.forEach((fieldElement) => {
       fieldElement.classList.add('error')

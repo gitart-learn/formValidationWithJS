@@ -44,7 +44,7 @@ export const fields = [
 
 export const fieldsValidationRules = [
   {
-    name: 'title',
+    inputName: 'title',
     rules: [
       {
         ruleName: 'required',
@@ -60,7 +60,7 @@ export const fieldsValidationRules = [
   },
 
   {
-    name: 'content',
+    inputName: 'content',
     rules: [{
       ruleName: 'required',
     },
@@ -70,7 +70,7 @@ export const fieldsValidationRules = [
     }],
   },
   {
-    name: 'email',
+    inputName: 'email',
     rules: [{
       ruleName: 'required',
     },
@@ -79,7 +79,7 @@ export const fieldsValidationRules = [
     }],
   },
   {
-    name: 'phone',
+    inputName: 'phone',
     rules: [{
       ruleName: 'required',
     },
@@ -88,31 +88,31 @@ export const fieldsValidationRules = [
     }],
   },
   {
-    name: 'date',
+    inputName: 'date',
     rules: [{
       ruleName: 'required',
     }],
   },
   {
-    name: 'category',
+    inputName: 'category',
     rules: [{
       ruleName: 'required',
     }],
   },
   {
-    name: 'radio',
+    inputName: 'radio',
     rules: [{
       ruleName: 'required',
     }],
   },
   {
-    name: 'show',
+    inputName: 'show',
     rules: [{
       ruleName: 'required',
     }],
   },
   {
-    name: 'tag',
+    inputName: 'tag',
     rules: [{
       ruleName: 'required',
     }],
