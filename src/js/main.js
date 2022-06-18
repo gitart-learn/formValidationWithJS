@@ -1,175 +1,58 @@
 
 import '../sass/main.scss'
-import { getDataFromForm } from './getDataFromForm'
+import { getDataFromField, getDataFromForm } from './formHelpers/getDataFromForm'
 import { validateData } from './validateData'
-import { handelResponse } from './handelResponse'
-
-// const form1 = document.querySelector('#form1')
-
-// form1.onsubmit = (e) => {
-//   e.preventDefault()
-
-//   const data = getDataFromForm(form1, [
-//     {
-//       inputName: 'title',
-//       type: 'text',
-//     },
-//     {
-//       inputName: 'content',
-//       type: 'text',
-//     },
-//     {
-//       inputName: 'date',
-//       type: 'date',
-//     },
-//     {
-//       inputName: 'category',
-//       type: 'radio',
-//     },
-//     {
-//       inputName: 'show',
-//       type: 'switcher',
-//     },
-//     {
-//       inputName: 'tag',
-//       type: 'checkbox',
-//     },
-
-//   ])
-//   console.log(data)
-// }
+import { handleErrors } from './formHelpers/handleErrors'
+import { fields, fieldsValidationRules } from './data/post-form'
 
 const form = document.querySelector('#form')
+// const errorHandler = initErrorHandler(form, fields, fieldsValidationRules)
 
-form.onsubmit = (e) => {
-  e.preventDefault()
+let afterSubmit = false
+// form.onsubmit = (e) => {
+//   e.preventDefault()
 
-  const fieldsToCheck = [
-    {
-      inputName: 'title',
-      type: 'text',
-    },
-    {
-      inputName: 'email',
-      type: 'text',
-    },
-    {
-      inputName: 'phoneCode',
-      type: 'text',
-    },
-    {
-      inputName: 'phone',
-      type: 'text',
-    },
-    {
-      inputName: 'content',
-      type: 'text',
-    },
-    {
-      inputName: 'date',
-      type: 'date',
-    },
-    {
-      inputName: 'category',
-      type: 'radio',
-    },
-    {
-      inputName: 'radio',
-      type: 'radio',
-    },
-    {
-      inputName: 'show',
-      type: 'switcher',
-    },
-    {
-      inputName: 'tag',
-      type: 'checkbox',
-    },
+//   const data = getDataFromForm(form, fields)
+//   // console.log(data)
 
-  ]
-  const data = getDataFromForm(form, fieldsToCheck)
-  console.log('data')
-  console.log(data)
-  const fieldsValidationRules = [
-    {
-      name: 'title',
-      rules: [
-        {
-          ruleName: 'required',
-          SpecificErrorMessage: 'i said title is a required field',
-        },
-        {
-          ruleName: 'minLength',
-          value: 3,
+//   const errors = validateData(data, fieldsValidationRules)
+//   // console.log('response: ')
 
-        },
-      ],
-    },
+//   // errors.forEach(elem => console.log(elem))
 
-    {
-      name: 'content',
-      rules: [{
-        ruleName: 'required',
-      },
-      {
-        ruleName: 'minLength',
-        value: 20,
-      }],
-    },
-    {
-      name: 'email',
-      rules: [{
-        ruleName: 'required',
-      },
-      {
-        ruleName: 'email',
-      }],
-    },
-    {
-      name: 'phone',
-      rules: [{
-        ruleName: 'required',
-      },
-      {
-        ruleName: 'phone',
-      }],
-    },
-    {
-      name: 'date',
-      rules: [{
-        ruleName: 'required',
-      }],
-    },
-    {
-      name: 'category',
-      rules: [{
-        ruleName: 'required',
-      }],
-    },
-    {
-      name: 'radio',
-      rules: [{
-        ruleName: 'required',
-      }],
-    },
-    {
-      name: 'show',
-      rules: [{
-        ruleName: 'required',
-      }],
-    },
-    {
-      name: 'tag',
-      rules: [{
-        ruleName: 'required',
-      }],
-    },
+//   handleErrors(errors, form)
 
-  ]
-  const validationResponse = validateData(data, fieldsValidationRules)
-  console.log('response: ')
+//   afterSubmit = true
+// }
 
-  validationResponse.forEach(elem => console.log(elem))
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+  const data = getDataFromForm(form, fields)
+  // console.log(data)
 
-  handelResponse(validationResponse, form, fieldsToCheck)
-}
+  const errors = validateData(data, fieldsValidationRules)
+  // console.log('response: ')
+
+  // errors.forEach(elem => console.log(elem))
+
+  handleErrors(errors, form)
+
+  afterSubmit = true
+})
+
+form.addEventListener('input', (event) => {
+  console.log(event.target)
+  if (afterSubmit) {
+    console.log('input listener')
+
+    const data = getDataFromForm(form, fields)
+    // console.log(data)
+
+    const errors = validateData(data, fieldsValidationRules)
+    // console.log('response: ')
+
+    // errors.forEach(elem => console.log(elem))
+
+    handleErrors(errors, form)
+  }
+})

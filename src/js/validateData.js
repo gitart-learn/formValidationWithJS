@@ -1,4 +1,3 @@
-// import { getSelectedRadio } from './getDataFromForm'
 
 function checkIfThereIsData(fieldData) {
   return !!fieldData && fieldData.length > 0
@@ -27,7 +26,7 @@ const rulesInstructions = [
   {
     ruleName: 'minLength',
     checkFunc: checkMinLength,
-    defaultErrorMessage: 'length should be at least {minLength} characters',
+    defaultErrorMessage: 'length should be at least {value} characters',
   },
   {
     ruleName: 'email',
@@ -43,7 +42,7 @@ const rulesInstructions = [
 ]
 
 function validateData(data, fieldsValidationRules) {
-  const validationResponse = []
+  const errors = []
 
   for (const fieldName in data) {
     const validationCriteria = (fieldsValidationRules.find(fieldValidationRules => fieldValidationRules.name === fieldName))
@@ -54,41 +53,13 @@ function validateData(data, fieldsValidationRules) {
       const ruleInstructions = rulesInstructions.find(elem => elem.ruleName === rule.ruleName)
       const response = ruleInstructions.checkFunc(data[fieldName], rule.value)
       if (!response) {
-        const errorMessage = rule.SpecificErrorMessage || ruleInstructions.defaultErrorMessage.replace('{fieldName}', fieldName).replace('{minLength}', rule.value)
+        let errorMessage = rule.SpecificErrorMessage || ruleInstructions.defaultErrorMessage
+        errorMessage = errorMessage.replace('{fieldName}', fieldName).replace('{value}', rule.value)
 
-        validationResponse.push({
+        errors.push({
           fieldName,
           errorMessage,
-          checkFunc: ruleInstructions.checkFunc,
-          value: rule.value,
-
         })
-
-        // show response on page {
-
-        // const inputs = document.querySelectorAll(`[name="${fieldName}"]`)
-        // inputs.forEach((input) => {
-        //   if (!input.parentElement.parentElement.querySelector('.invalid-feedback')) {
-        //     const error = document.createElement('div')
-        //     error.classList.add('invalid-feedback')
-        //     error.innerText = errorMessage
-        //     input.parentElement.parentElement.appendChild(error)
-        //   }
-
-        //   input.addEventListener('input', () => {
-        //     const responseAfterInput = ruleInstructions.checkFunc(getSelectedRadio(fieldName), rule.value)
-        //     console.log(responseAfterInput)
-        //     console.log('get radio again', fieldName, getSelectedRadio(fieldName))
-        //     if (responseAfterInput) {
-        //       input.classList.remove('error')
-        //       const feedback = input.parentElement.parentElement.querySelector('.invalid-feedback')
-        //       if (feedback) {
-        //         feedback.remove()
-        //       }
-        //     }
-        //   })
-        // })
-        // }
 
         return true
       }
@@ -97,26 +68,7 @@ function validateData(data, fieldsValidationRules) {
     )
   }
 
-  // show response on page
-  // validationResponse.forEach((elem) => {
-  //   const errorMessage = elem.errorMessage
-  //   const fieldName = elem.fieldName
-  //   const field = document.querySelector(`[name="${fieldName}"]`)
-  //   field.classList.add('error')
-  //   // field.setAttribute('invalid', true)
-  //   const error = document.createElement('div')
-  //   error.classList.add('invalid-feedback')
-  //   error.innerText = errorMessage
-  //   field.parentElement.appendChild(error)
-
-  //   field.addEventListener('input', () => {
-  //     field.classList.remove('error')
-  //     field.parentElement.querySelector('.invalid-feedback').remove()
-  //   })
-  // },
-  // )
-
-  return validationResponse
+  return errors
 }
 
 export { validateData }
