@@ -3,8 +3,6 @@ export const fields = [
     inputName: 'title',
     type: 'text',
   },
-
-
   {
     inputName: 'content',
     type: 'text',
@@ -56,7 +54,6 @@ export const fieldsValidationRules = [
       value: 20,
     }],
   },
-
 
   {
     inputName: 'date',

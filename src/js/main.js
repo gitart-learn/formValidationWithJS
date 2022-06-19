@@ -1,8 +1,8 @@
 
 import '../sass/main.scss'
-import { fields, fieldsValidationRules } from './data/post-form'
-import { fields as fieldsForForm1, fieldsValidationRules as fieldsValidationRulesForForm1 } from './data/post-form1'
-import { addFormValidation } from './formHelpers/addFormValidation'
+import { fields, fieldsValidationRules } from './form/data/post-form'
+import { fields as fieldsForForm1, fieldsValidationRules as fieldsValidationRulesForForm1 } from './form/data/post-form1'
+import { addFormValidation } from './form/formHelpers/addFormValidation'
 
 const form = document.querySelector('#form')
 addFormValidation(form, fields, fieldsValidationRules)

@@ -1,4 +1,4 @@
-import { validateData } from '../validateData'
+import { validateData } from '../../validateData'
 import { getDataFromForm } from './getDataFromForm'
 import { handleErrors } from './handleErrors'
 
