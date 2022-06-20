@@ -1,8 +1,9 @@
 function removeErrorFeedback(form) {
   const elementsWithError = form.querySelectorAll('.error')
-  elementsWithError.forEach((elem) => {
-    elem.classList.remove('error')
-    const feedback = elem.parentElement.parentElement.querySelector('.invalid-feedback')
+  elementsWithError.forEach((fieldElement) => {
+    fieldElement.classList.remove('error')
+    const fieldParentBLock = fieldElement.closest('.form__item')
+    const feedback = fieldParentBLock.querySelector('.invalid-feedback')
     if (feedback) feedback.remove()
   })
 }
@@ -15,11 +16,12 @@ function addErrorFeedback(errors, form) {
 
     fieldsElements.forEach((fieldElement) => {
       fieldElement.classList.add('error')
-      if (!fieldElement.parentElement.parentElement.querySelector('.invalid-feedback')) {
+      const fieldParentBLock = fieldElement.closest('.form__item')
+      if (!fieldParentBLock.querySelector('.invalid-feedback')) {
         const error = document.createElement('div')
         error.classList.add('invalid-feedback')
         error.innerText = errorMessage
-        fieldElement.parentElement.parentElement.appendChild(error)
+        fieldParentBLock.appendChild(error)
       }
     },
     )
