@@ -106,12 +106,6 @@ export const fieldsValidationRules = [
     }],
   },
   {
-    inputName: 'show',
-    rules: [{
-      ruleName: 'required',
-    }],
-  },
-  {
     inputName: 'tag',
     rules: [{
       ruleName: 'required',
