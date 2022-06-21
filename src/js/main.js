@@ -13,4 +13,3 @@ addFormValidation(form, fields, fieldsValidationRules, logData)
 
 const form1 = document.querySelector('#form1')
 addFormValidation(form1, fieldsForForm1, fieldsValidationRulesForForm1, logData)
-

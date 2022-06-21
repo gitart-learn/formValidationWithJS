@@ -3,7 +3,7 @@ import { getDataFromForm } from './getDataFromForm'
 import { handleErrors } from './handleErrors'
 
 
-function addFormValidation(form, fields, fieldsValidationRules, logData) {
+function addFormValidation(form, fields, fieldsValidationRules, handleData) {
   let haveValidationError = false
 
   form.addEventListener('submit', (e) => {
@@ -14,7 +14,7 @@ function addFormValidation(form, fields, fieldsValidationRules, logData) {
 
     if (errors.length === 0) {
       // console.log(data)
-      logData(data)
+      handleData(data)
       form.reset()
       haveValidationError = false
     }
