@@ -7,12 +7,12 @@ function addFormValidation(form, fields, fieldsValidationRules, handleData) {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault()
-
     const data = getDataFromForm(form, fields)
+
     const errors = validateData(data, fieldsValidationRules)
 
+    console.log(errors) // write fields file
     if (errors.length === 0) {
-      // console.log(data)
       handleData(data)
       form.reset()
       haveValidationError = false
